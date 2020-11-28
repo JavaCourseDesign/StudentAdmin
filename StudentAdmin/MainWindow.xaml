@@ -1,0 +1,32 @@
+﻿<Window x:Class="StudentAdmin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentAdmin"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="Microsoft YaHei UI"
+        Title="MainWindow" Height="600" Width="1024" MinHeight="600" MinWidth="1024">
+    <DockPanel>
+        <materialDesign:ColorZone Height="60" DockPanel.Dock="Top" Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Grid>
+                <TextBlock Text="学生管理系统" FontSize="18" FontWeight="Bold" Foreground="Snow" Margin="10, 20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </materialDesign:ColorZone>
+        
+        <materialDesign:ColorZone Width="150" DockPanel.Dock="Left" Mode="Dark" materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical">
+                <Button Content="学生管理" Name="StudentNavBtn" Click="StudentNavBtn_OnClick" Margin="4, 10" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                <Button Content="教师管理" Name="TeacherNavBtn" Click="TeacherNavBtn_OnClick" Margin="4, 10" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                <Button Content="选课管理" Name="CourseNavBtn" Click="CourseNavBtn_OnClick" Margin="4 ,10" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Source="StudentAdminPage.xaml"></Frame>
+    </DockPanel>
+</Window>
