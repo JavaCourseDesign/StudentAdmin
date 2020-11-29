@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudentAdmin.ViewModels;
 
 namespace StudentAdmin
 {
@@ -23,6 +24,8 @@ namespace StudentAdmin
         public MainWindow()
         {
             InitializeComponent();
+            
+            DataContext = new DataGridViewModel();
         }
 
         private void StudentNavBtn_OnClick(object sender, RoutedEventArgs e)

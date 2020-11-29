@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StudentAdmin"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModels="clr-namespace:StudentAdmin.ViewModels"
       mc:Ignorable="d"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       Background="{DynamicResource MaterialDesignPaper}"
@@ -12,10 +13,30 @@
       TextElement.FontSize="14"
       FontFamily="Microsoft YaHei UI"
       Title="TeacherAdminPage" Height="450" Width="800">
+    <Page.DataContext>
+        <viewModels:DataGridViewModel/>
+    </Page.DataContext>
+    
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top" Text="教师信息管理"/>
-        <Grid>
-            
+        <TextBlock DockPanel.Dock="Top" Text="教师信息管理" FontSize="15" Margin="5, 10"/>
+        
+        <Grid Margin="5, 10">
+            <DataGrid Name="StudentGrid" AutoGenerateColumns="False" HeadersVisibility="All" ItemsSource="{Binding Path=Teachers}">
+                <DataGrid.Resources>
+                    <local:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="姓名" Binding="{Binding Path=(local:Person.name)}"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                    <DataGridTextColumn Header="工号" Binding="{Binding Path=(local:Person.id)}"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                    <DataGridTextColumn Header="性别" Binding="{Binding Path=(local:Person.sex)}"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </DockPanel>
 </Page>
