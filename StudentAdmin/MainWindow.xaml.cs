@@ -25,7 +25,7 @@ namespace StudentAdmin
         {
             InitializeComponent();
             
-            DataContext = new DataGridViewModel();
+            // DataContext = new DataGridViewModel();
         }
 
         private void StudentNavBtn_OnClick(object sender, RoutedEventArgs e)

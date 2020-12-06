@@ -20,9 +20,16 @@ namespace StudentAdmin
             get => _linkId;
             set
             {
-                if (_linkId == value) return;
-                _linkId = value;
-                OnPropertyChanged();
+                if (_linkId == 0)
+                {
+                    _linkId = value;
+                    OnPropertyChanged();
+                } else if (_linkId != value)
+                {
+                    _linkId = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
         
@@ -31,9 +38,16 @@ namespace StudentAdmin
             get => _stuId;
             set
             {
-                if (_stuId == value) return;
-                _stuId = value;
-                OnPropertyChanged();
+                if (_stuId == 0)
+                {
+                    _stuId = value;
+                    OnPropertyChanged();
+                } else if (_stuId != value)
+                {
+                    _stuId = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -42,9 +56,16 @@ namespace StudentAdmin
             get => _courseId;
             set
             {
-                if (_courseId == value) return;
-                _courseId = value;
-                OnPropertyChanged();
+                if (_courseId == 0)
+                {
+                    _courseId = value;
+                    OnPropertyChanged();
+                } else if (_courseId != value)
+                {
+                    _courseId = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -53,9 +74,16 @@ namespace StudentAdmin
             get => _courseName;
             set
             {
-                if (_courseName == value) return;
-                _courseName = value;
-                OnPropertyChanged();
+                if (_courseName == null)
+                {
+                    _courseName = value;
+                    OnPropertyChanged();
+                } else if (_courseName != value)
+                {
+                    _courseName = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -64,9 +92,16 @@ namespace StudentAdmin
             get => _teacherId;
             set
             {
-                if (_teacherId == value) return;
-                _teacherId = value;
-                OnPropertyChanged();
+                if (_teacherId == 0)
+                {
+                    _teacherId = value;
+                    OnPropertyChanged();
+                } else if (_teacherId != value)
+                {
+                    _teacherId = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
         
@@ -75,9 +110,16 @@ namespace StudentAdmin
             get => _grade;
             set
             {
-                if (_grade == value) return;
-                _grade = value;
-                OnPropertyChanged();
+                if (_grade == 0)
+                {
+                    _grade = value;
+                    OnPropertyChanged();
+                } else if (_grade != value)
+                {
+                    _grade = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/course/update?linkId={_linkId}&studentId={_stuId}&courseId={_courseId}&courseName={_courseName}&teacherId={_teacherId}&grade={_grade}");
+                    OnPropertyChanged();
+                }
             }
         }
 

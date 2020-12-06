@@ -21,7 +21,7 @@
         <TextBlock DockPanel.Dock="Top" Text="选课信息管理" FontSize="15" Margin="5, 10"/>
         
         <Grid Margin="5, 10">
-            <DataGrid Name="StudentGrid" AutoGenerateColumns="False" HeadersVisibility="All" ItemsSource="{Binding Path=Courses}">
+            <DataGrid Name="CourseGrid" AutoGenerateColumns="False" HeadersVisibility="All" ItemsSource="{Binding Path=Courses}">
                 <DataGrid.Resources>
                     <local:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
                 </DataGrid.Resources>
@@ -38,6 +38,15 @@
                     <DataGridTextColumn Header="成绩" Binding="{Binding Path=(local:Course.grade)}"
                                         ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                    <DataGridTemplateColumn Header="操作">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="DelBtn" Style="{StaticResource MaterialDesignIconButton}"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Height="20" Width="22" Click="DelBtn_OnClick">
+                                    <materialDesign:PackIcon Kind="DeleteOutline" Width="18" Height="18" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

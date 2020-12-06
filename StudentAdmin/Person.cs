@@ -17,9 +17,16 @@ namespace StudentAdmin
             get => _id;
             set
             {
-                if (_id == value) return;
-                _id = value;
-                OnPropertyChanged();
+                if (_id == 0)
+                {
+                    _id = value;
+                    OnPropertyChanged();
+                } else if (_id != value)
+                {
+                    _id = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/student/update?id={_id}&name={_name}&sex={_sex}");
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -27,9 +34,23 @@ namespace StudentAdmin
             get => _name;
             set
             {
-                if (_name == value) return;
-                _name = value;
-                OnPropertyChanged();
+                if (_id == 0 && _sex != null)
+                {
+                    _name = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/student/add?name={_name}&sex={_sex}");
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(id));
+                }
+                if (_name == null)
+                {
+                    _name = value;
+                    OnPropertyChanged();
+                } else if (_name != value)
+                {
+                    _name = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/student/update?id={_id}&name={_name}&sex={_sex}");
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -37,9 +58,16 @@ namespace StudentAdmin
             get => _sex;
             set
             {
-                if (_sex == value) return;
-                _sex = value;
-                OnPropertyChanged();
+                if (_sex == null)
+                {
+                    _sex = value;
+                    OnPropertyChanged();
+                } else if (_sex != value)
+                {
+                    _sex = value;
+                    HttpClientHelper.Get($"http://rinne.top:16384/student/update?id={_id}&name={_name}&sex={_sex}");
+                    OnPropertyChanged();
+                }
             }
         }
 

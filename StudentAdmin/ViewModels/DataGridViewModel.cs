@@ -23,6 +23,26 @@ namespace StudentAdmin.ViewModels
             Courses = JsonSerializer.Deserialize<ObservableCollection<Course>>(HttpClientHelper.Get("http://rinne.top:16384/course/list"));
         }
 
+        public void DeleteHandler(Person person, bool isStudent, int index)
+        {
+            if (isStudent)
+            {
+                Students.RemoveAt(index);
+                HttpClientHelper.Get($"http://rinne.top:16384/student/del?id={person.id}");
+            }
+            else
+            {
+                Teachers.RemoveAt(index);
+                HttpClientHelper.Get($"http://rinne.top:16384/teacher/del?id={person.id}");
+            }
+        }
+
+        public void DeleteHandler(Course course, int index)
+        {
+            Courses.RemoveAt(index);
+            HttpClientHelper.Get($"http://rinne.top:16384/course/del?linkId={course.link_id}");
+        }
+
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
